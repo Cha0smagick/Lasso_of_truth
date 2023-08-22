@@ -16,7 +16,8 @@ Identifica y presenta las 10 palabras más frecuentes en el texto analizado. Est
 3. Visualización de Datos
 
 La herramienta utiliza las bibliotecas Matplotlib y Seaborn para crear gráficos que facilitan la comprensión de los datos. Incluye un gráfico de barras para palabras clave, una nube de palabras y un gráfico de barras para la longitud de los párrafos.
-Instalación
+
+# Instalación
 
 Para utilizar esta herramienta, sigue estos pasos:
 
