@@ -21,9 +21,9 @@ Instalación
 Para utilizar esta herramienta, sigue estos pasos:
 
 Clona este repositorio en tu máquina local usando git clone o descarga el archivo ZIP.
-Navega al directorio del repositorio:
+Descomprime el archivo de ser necesario y navega al directorio del repositorio:
 
-    cd Analisis_Cualitativo_de_Texto_Python
+    cd Lasso_of_truth-main
 
 Instala las dependencias utilizando pip y el archivo requirements.txt:
 
