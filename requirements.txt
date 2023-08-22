@@ -1,0 +1,5 @@
+nltk
+textblob
+wordcloud
+matplotlib
+seaborn
