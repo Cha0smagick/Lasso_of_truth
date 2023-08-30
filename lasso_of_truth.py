@@ -69,8 +69,8 @@ if not os.path.exists("resultados/imagenes"):
     os.mkdir("resultados/imagenes")
 
 # Gráfico de barras para palabras clave y guardar como imagen independiente
-plt.figure(figsize=(6, 6))
-plt.bar(*zip(*palabras_clave))
+plt.figure(figsize=(8, 6))
+sns.barplot(x=[word for word, freq in palabras_clave], y=[freq for word, freq in palabras_clave], palette="muted")
 plt.title('Palabras Clave')
 plt.xticks(rotation=45)
 plt.xlabel('Palabra')
@@ -79,7 +79,7 @@ plt.savefig('resultados/imagenes/palabras_clave.png', bbox_inches='tight')  # Gu
 
 # Nube de palabras y guardar como imagen independiente
 wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(frecuencia)
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(10, 6))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.title('Nube de Palabras')
 plt.axis('off')
@@ -87,8 +87,8 @@ plt.savefig('resultados/imagenes/nube_palabras.png', bbox_inches='tight')  # Gua
 
 # Gráfico de barras para longitud de párrafos y guardar como imagen independiente
 plt.figure(figsize=(8, 6))
+sns.barplot(x=list(range(1, num_frases+1)), y=longitudes_parrafos, palette="Blues_d")
 plt.axhline(y=longitud_promedio, color='red', linestyle='--', label='Longitud Promedio')
-sns.barplot(x=list(range(1, num_frases+1)), y=longitudes_parrafos, palette="viridis")
 plt.title('Longitud de Párrafos')
 plt.xlabel('Párrafo')
 plt.ylabel('Longitud de Palabras')
@@ -119,7 +119,7 @@ plt.savefig('resultados/imagenes/diagrama_dispersión_palabras_clave.png', bbox_
 frecuencia_palabras = [frecuencia[palabra] for palabra, _ in palabras_clave]
 posiciones_palabras = [pos[0] for pos in palabras_clave]
 plt.figure(figsize=(10, 6))
-plt.plot(posiciones_palabras, frecuencia_palabras, marker='o')
+plt.plot(posiciones_palabras, frecuencia_palabras, marker='o', linestyle='-', color='green')
 plt.title('Gráfico de Frecuencia de Palabras Clave a lo Largo del Texto')
 plt.xlabel('Posición en el Texto')
 plt.ylabel('Frecuencia')
@@ -138,13 +138,13 @@ for i, (palabra1, _) in enumerate(palabras_clave):
 # Crear el mapa de calor
 plt.figure(figsize=(8, 8))
 sns.heatmap(co_ocurrencia_matrix, annot=True, fmt='.0f', xticklabels=[palabra for palabra, _ in palabras_clave],
-            yticklabels=[palabra for palabra, _ in palabras_clave])
+            yticklabels=[palabra for palabra, _ in palabras_clave], cmap="YlGnBu")
 plt.title('Mapa de Calor de Co-ocurrencia de Palabras Clave')
 plt.savefig('resultados/imagenes/mapa_calor_coocurrencia.png', bbox_inches='tight')
 
 # Gráfico de densidad de polaridad
 plt.figure(figsize=(8, 6))
-sns.kdeplot(polaridades, shade=True, color="skyblue")
+sns.kdeplot(polaridades, shade=True, color="orange")
 plt.title('Gráfico de Densidad de Polaridad')
 plt.xlabel('Polaridad')
 plt.ylabel('Densidad')
