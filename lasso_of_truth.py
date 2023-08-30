@@ -98,9 +98,11 @@ plt.savefig('resultados/imagenes/longitud_parrafos.png', bbox_inches='tight')  #
 # Histograma de polaridad de oraciones y guardar como imagen independiente
 plt.figure(figsize=(8, 6))
 sns.histplot(polaridades, kde=True, color="skyblue")
+plt.axvline(x=polaridad_promedio, color='green', linestyle='-', label='Media')
 plt.title('Distribución de Polaridad de Oraciones')
 plt.xlabel('Polaridad')
 plt.ylabel('Frecuencia')
+plt.legend()
 plt.savefig('resultados/imagenes/histograma_polaridad.png', bbox_inches='tight')  # Guardar la imagen
 
 # Diagrama de dispersión de palabras clave
@@ -145,9 +147,12 @@ plt.savefig('resultados/imagenes/mapa_calor_coocurrencia.png', bbox_inches='tigh
 # Gráfico de densidad de polaridad
 plt.figure(figsize=(8, 6))
 sns.kdeplot(polaridades, shade=True, color="orange")
+plt.axvline(x=polaridad_promedio, color='green', linestyle='-', label='Media')
+sns.kdeplot(polaridades, shade=True, color="red", linestyle='--', label='Tendencia')
 plt.title('Gráfico de Densidad de Polaridad')
 plt.xlabel('Polaridad')
 plt.ylabel('Densidad')
+plt.legend()
 plt.savefig('resultados/imagenes/grafico_densidad_polaridad.png', bbox_inches='tight')
 
 # Ajustar el espaciado entre subplots
